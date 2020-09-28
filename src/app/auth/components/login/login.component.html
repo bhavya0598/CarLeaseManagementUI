@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 mt-5 mb-3 text-center">
+        <h2 class="text-light">
+          Login Page
+        </h2>
+      </div>
+      <div class="col-md-6 col-12">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="text-white-50" for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" formControlName="email" placeholder="Email">
+            <div
+              *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+              <small class="form-text text-danger" *ngIf="loginForm.controls['email'].errors.email">
+                Invalid Email
+              </small>
+              <small *ngIf="loginForm.controls['email'].errors.required" class="form-text text-danger">
+                Required
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="text-white-50" for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" formControlName="password"
+              placeholder="Password">
+            <div
+              *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+              <small *ngIf="loginForm.controls['password'].errors.required" class="form-text text-danger">
+                Required
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <small>
+              <a class="dark-link" [routerLink]="['/register']">Create an Account</a>
+            </small>
+          </div>
+          <div class="form-group" *ngIf="loginError">
+            <small class="fomr-text text-danger">{{loginError}}</small>
+          </div>
+          <div class="form-group">
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

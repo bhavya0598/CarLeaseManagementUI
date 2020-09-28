@@ -1,0 +1,36 @@
+  <div class="card mb-3" (click)="onClick(car.carId)">
+    <h4 class="card-header">{{car.model}}<br>
+      <h6 class="bg-info" style="width: fit-content; padding: 3px; border-radius: 5px;">{{car.make}}</h6>
+    </h4>
+    <img [src]="car.imagePath" [alt]="car.model">
+    <div class="row custom-body">
+      <div class="col-6">
+        <ul class="list-group list-group-flush text-center">
+          <li class="custom-group-item"><span class="text-muted"
+              style="font-size: x-small;">Fuel</span><br>{{car.fuelType}}</li>
+          <li class="custom-group-item"><span class="text-muted" style="font-size: x-small;">CO<sub>2</sub>
+              Emission</span><br>{{car.cO2Emission}} g/km</li>
+          <li class="custom-group-item"><span class="text-muted" style="font-size: x-small;">Body
+              Type</span><br>{{car.bodyType}}</li>
+          <li class="custom-group-item"><span class="text-muted" style="font-size: x-small;">Fuel
+              Capacity</span><br>{{car.fuelCapacity}} L</li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="list-group list-group-flush text-center">
+          <li class="custom-group-item"><span class="text-muted"
+              style="font-size: x-small;">Transmission</span><br>{{car.transmission}}</li>
+          <li class="custom-group-item"><span class="text-muted"
+              style="font-size: x-small;">Mileage</span><br>{{car.mileage}} L/km</li>
+          <li class="custom-group-item"><span class="text-muted"
+              style="font-size: x-small;">Interior</span><br>{{car.interiorType}}</li>
+          <li class="custom-group-item"><span class="text-muted"
+              style="font-size: x-small;">Seats</span><br>{{car.seats}}</li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div> -->
+  </div>

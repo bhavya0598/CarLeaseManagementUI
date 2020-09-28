@@ -1,0 +1,57 @@
+img {
+  object-fit: contain;
+  width: 100%;
+  display: block;
+  margin-top: 1rem;
+}
+
+table,
+th,
+td {
+  border: 0px !important;
+}
+
+.custom-background {
+  background-color: #303030;
+}
+
+.custom-price-display {
+  color: #f39c12;
+  padding: 4px 8px;
+  border: 1px solid #f39c12;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  img {
+    height: 200px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+  img {
+    height: 200px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  img {
+    height: 250px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  img {
+    height: 350px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  img {
+    height: 350px;
+  }
+}

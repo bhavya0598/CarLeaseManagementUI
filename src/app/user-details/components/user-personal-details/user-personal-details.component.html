@@ -1,0 +1,142 @@
+<div *ngIf="userPersonal">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-12 col-md-5">
+          <h3 class="mb-3">User Personal Form</h3>
+          <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input class="form-control" type="text" id="firstname" formControlName="firstname" placeholder="Firstname"
+                required>
+              <div
+                *ngIf="personalForm.controls['firstname'].invalid && (personalForm.controls['firstname'].dirty || personalForm.controls['firstname'].touched)">
+                <small *ngIf="personalForm.controls['firstname'].errors.maxlength" class="form-text text-danger">
+                  Length must be less than 25 characters
+                </small>
+                <small *ngIf="personalForm.controls['firstname'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+                <small *ngIf="personalForm.controls['firstname'].errors.pattern" class="form-text text-danger">
+                  Only Alphabets
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" id="lastname" formControlName="lastname" placeholder="Lastname"
+                required>
+              <div
+                *ngIf="personalForm.controls['lastname'].invalid && (personalForm.controls['lastname'].dirty || personalForm.controls['lastname'].touched)">
+                <small *ngIf="personalForm.controls['lastname'].errors.maxlength" class="form-text text-danger">
+                  Length must be less than 25 characters
+                </small>
+                <small *ngIf="personalForm.controls['lastname'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+                <small *ngIf="personalForm.controls['lastname'].errors.pattern" class="form-text text-danger">
+                  Only Alphabets
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" id="contact" name="contact" formControlName="contact"
+                placeholder="Contact">
+              <div
+                *ngIf="personalForm.controls['contact'].invalid && (personalForm.controls['contact'].dirty || personalForm.controls['contact'].touched)">
+                <small class="form-text text-danger" *ngIf="personalForm.controls['contact'].errors.pattern">
+                  Invalid Contact Number
+                </small>
+                <small *ngIf="personalForm.controls['contact'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                  formControlName="gender">
+                <label class="form-check-label" for="male">
+                  Male
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                  formControlName="gender">
+                <label class="form-check-label" for="female">
+                  Female
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="date" class="form-control" formControlName="dob" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="houseNo" placeholder="HouseNo" formControlName="houseNo"
+                required>
+              <div
+                *ngIf="personalForm.controls['houseNo'].invalid && (personalForm.controls['houseNo'].dirty || personalForm.controls['houseNo'].touched)">
+                <small *ngIf="personalForm.controls['houseNo'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="street" placeholder="Street" formControlName="street"
+                required>
+              <div
+                *ngIf="personalForm.controls['street'].invalid && (personalForm.controls['street'].dirty || personalForm.controls['street'].touched)">
+                <small *ngIf="personalForm.controls['street'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="city" placeholder="City" formControlName="city" required>
+              <div
+                *ngIf="personalForm.controls['city'].invalid && (personalForm.controls['city'].dirty || personalForm.controls['city'].touched)">
+                <small *ngIf="personalForm.controls['city'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="state" placeholder="State" formControlName="state" required>
+              <div
+                *ngIf="personalForm.controls['state'].invalid && (personalForm.controls['state'].dirty || personalForm.controls['state'].touched)">
+                <small *ngIf="personalForm.controls['state'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="country" placeholder="Country" formControlName="country"
+                required>
+              <div
+                *ngIf="personalForm.controls['country'].invalid && (personalForm.controls['country'].dirty || personalForm.controls['country'].touched)">
+                <small *ngIf="personalForm.controls['country'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="pincode" placeholder="Pincode" formControlName="pincode"
+                required>
+              <div
+                *ngIf="personalForm.controls['pincode'].invalid && (personalForm.controls['pincode'].dirty || personalForm.controls['pincode'].touched)">
+                <small *ngIf="personalForm.controls['pincode'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-secondary mr-3" type="button" (click)="goBack()">Back</button>
+              <button class="btn btn-success" [disabled]="!personalForm.valid" type="submit">Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

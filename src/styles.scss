@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+// html, body{
+//     font-family: 'Roboto', sans-serif;
+// }
+
+@import "./variables"; 
+@import "../node_modules/bootstrap/scss/bootstrap"; 
+@import "../node_modules/bootswatch/dist/darkly/bootswatch";
+
+// :root{
+//     filter: invert(1) hue-rotate(180deg);
+// }
+
+// img{
+//     filter: invert(1) hue-rotate(180deg);
+// }

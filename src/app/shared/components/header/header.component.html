@@ -1,0 +1,6 @@
+<nav class="navbar justify-content-between bg-primary">
+  <a [routerLink]="['/car']" class="custom-anchor">
+    <span class="navbar-brand mb-0">Car Leasing Project</span>
+  </a>
+  <a class="custom-anchor" *ngIf="isVisible" [routerLink]="['/login']" (click)="onLogout()">Logout</a>
+</nav>

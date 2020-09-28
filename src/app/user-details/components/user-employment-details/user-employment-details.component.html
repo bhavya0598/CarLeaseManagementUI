@@ -1,0 +1,99 @@
+<div *ngIf="userEmployment">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-12 col-md-5">
+          <h3 class="mb-3">User Employment Form</h3>
+          <form [formGroup]="employmentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="companyName">Company Name</label>
+              <input class="form-control" type="text" id="companyName" formControlName="companyName"
+                placeholder="Company Name" required>
+              <div
+                *ngIf="employmentForm.controls['companyName'].invalid && (employmentForm.controls['companyName'].dirty || employmentForm.controls['companyName'].touched)">
+                <small *ngIf="employmentForm.controls['companyName'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="companyAddress">Company Address</label>
+              <input class="form-control" type="text" id="companyAddress" formControlName="companyAddress"
+                placeholder="Company Address" required>
+              <div
+                *ngIf="employmentForm.controls['companyAddress'].invalid && (employmentForm.controls['companyAddress'].dirty || employmentForm.controls['companyAddress'].touched)">
+                <small *ngIf="employmentForm.controls['companyAddress'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="creditScore">Credit Score</label>
+              <input class="form-control" type="number" id="creditScore" formControlName="creditScore"
+                placeholder="Credit Score" required>
+              <div
+                *ngIf="employmentForm.controls['creditScore'].invalid && (employmentForm.controls['creditScore'].dirty || employmentForm.controls['creditScore'].touched)">
+                <small class="form-text text-danger"
+                  *ngIf="employmentForm.controls['creditScore'].errors.min || employmentForm.controls['creditScore'].errors.max">
+                  Invalid Credit Score.
+                  Range 300-850
+                </small>
+                <small *ngIf="employmentForm.controls['creditScore'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="salary">Annual Salary</label>
+              <input type="number" class="form-control" id="salary" placeholder="Annual Salary" formControlName="salary"
+                required>
+              <div
+                *ngIf="employmentForm.controls['salary'].invalid && (employmentForm.controls['salary'].dirty || employmentForm.controls['salary'].touched)">
+                <small *ngIf="employmentForm.controls['salary'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="employmentTypeId">Employment Type</label>
+              <select class="form-control" formControlName="employmentTypeId">
+                <option [ngValue]="null" selected disabled>Employment Type</option>
+                <option *ngFor="let employment of employmentTypes" [ngValue]="employment.employmentTypeId">
+                  {{employment.employmentType}}
+                </option>
+              </select>
+              <div
+                *ngIf="employmentForm.controls['contractId'].invalid && (employmentForm.controls['contractId'].dirty || employmentForm.controls['contractId'].touched)">
+                <small *ngIf="employmentForm.controls['contractId'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contractId">Contract Type</label>
+              <select class="form-control" formControlName="contractId">
+                <option [ngValue]="null" selected disabled>Contract Type</option>
+                <option *ngFor="let contract of contracts" [ngValue]="contract.contractId">{{contract.contractType}}
+                </option>
+              </select>
+              <div
+                *ngIf="employmentForm.controls['employmentTypeId'].invalid && (employmentForm.controls['employmentTypeId'].dirty || employmentForm.controls['employmentTypeId'].touched)">
+                <small *ngIf="employmentForm.controls['employmentTypeId'].errors.required"
+                  class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-secondary mr-3" type="button" (click)="goBack()">Back</button>
+              <button class="btn btn-success" [disabled]="!employmentForm.valid" type="submit">Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

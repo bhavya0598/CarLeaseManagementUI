@@ -1,0 +1,20 @@
+export interface ICar {
+    carId : string,
+    make: string,
+    model: string ,
+    color : string ,
+    description : string ,
+    mileage : string ,
+    price : string ,
+    cO2Emission : string ,
+    fuelCapacity : string ,
+    modelDate :Date,
+    seats : number,
+    fuelComsumption : string ,
+    transmission : string ,
+    interiorType : string ,
+    bodyType : string ,
+    fuelType : string ,
+    imagePath: string,
+    isAvailable: boolean
+}

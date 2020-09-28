@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 mt-5 mb-3 text-center">
+        <h2 class="text-light">
+          Registeration Page
+        </h2>
+      </div>
+      <!--use form control here reactive from-->
+      <div class="col-md-6 col-12">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="text-white-50" for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" formControlName="username"
+              placeholder="Username">
+            <div
+              *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)">
+              <small class="form-text text-danger" *ngIf="registerForm.controls['username'].errors.maxLength">
+                Username must be less than 50 characters
+              </small>
+              <small *ngIf="registerForm.controls['username'].errors.required" class="form-text text-danger">
+                Required
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="text-white-50" for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" formControlName="email" placeholder="Email">
+            <div
+              *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+              <small class="form-text text-danger" *ngIf="registerForm.controls['email'].errors.email">
+                Invalid Email
+              </small>
+              <small *ngIf="registerForm.controls['email'].errors.required" class="form-text text-danger">
+                Required
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="text-white-50" for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" formControlName="password"
+              placeholder="Password">
+            <div
+              *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+              <small *ngIf="registerForm.controls['password'].errors.required" class="form-text text-danger">
+                Required
+              </small>
+              <small *ngIf="registerForm.controls['password'].errors.pattern" class="form-text text-danger">
+                <ul class="p-0 list-unstyled">
+                  <li>Atleast one numeric digit</li>
+                  <li>Atleast one spcial character</li>
+                  <li>Length between 7 -15</li>
+                </ul>
+              </small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="text-white-50" for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+              formControlName="confirmPassword" placeholder="Confirm Password">
+            <div
+              *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)">
+              <small *ngIf="registerForm.controls['confirmPassword'].errors.required" class="form-text text-danger">
+                Required
+              </small>
+            </div>
+            <div *ngIf="registerForm.controls['confirmPassword'].errors">
+                <small class="form-text text-danger" *ngIf="registerForm.errors.mustMatch">
+                  Password do not match
+                </small>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="errorMessage">
+            <small class="form-text text-danger">
+              {{errorMessage.Message}}
+            </small>
+          </div>
+          <div class="form-group">
+            <small>
+              <a class="dark-link" [routerLink]="['/login']">
+                Already an User?
+              </a>
+            </small>
+          </div>
+          <div class="form-group">
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

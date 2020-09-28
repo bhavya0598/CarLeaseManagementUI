@@ -1,0 +1,46 @@
+.card:hover{
+    transform: translate3D(0,-1px,0) scale(1.03);
+    border: 1px solid #3498db;
+    transition: all .4s ease; /* zoom in */
+    opacity: 0.6;
+    background: rgba($color: #272727, $alpha: 1.0);
+    cursor: pointer;
+}
+
+.card{
+    opacity: 1;
+    transition: all .5s ease; /* back to normal */
+}
+.card img{
+    height: 200px; 
+    width: 100%; 
+    display: block; 
+    object-fit: cover;
+}
+
+.custom-group-item{
+    position: relative;
+    display: block;
+    padding-bottom: 0.3rem
+}
+
+.custom-body{
+    min-height: 1px;
+    padding: 0.5rem 0.5rem;
+    font-size: small;
+}
+
+.display-text{
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    width: auto;
+    text-align: center;
+    visibility: hidden;
+}
+@media (max-width: 768px) { 
+    .card img{
+        margin-top: 1.75rem;
+        object-fit: contain;
+    }
+ }

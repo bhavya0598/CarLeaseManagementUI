@@ -1,0 +1,111 @@
+<div *ngIf="userBank">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-12 col-md-5">
+          <h3 class="mb-3">User Bank Form</h3>
+          <form [formGroup]="bankForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="accountNumber"> Account Number</label>
+              <input class="form-control" type="text" id="accountNumber" formControlName="accountNumber"
+                placeholder="Account Number" required>
+              <div
+                *ngIf="bankForm.controls['accountNumber'].invalid && (bankForm.controls['accountNumber'].dirty || bankForm.controls['accountNumber'].touched)">
+                <small *ngIf="bankForm.controls['accountNumber'].errors.pattern" class="form-text text-danger">
+                  Invalid Account Number
+                </small>
+                <small *ngIf="bankForm.controls['accountNumber'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="accountTypeId">Account Type</label>
+              <select class="form-control" formControlName="accountTypeId">
+                <option [ngValue]="null" selected disabled>Account Type</option>
+                <option *ngFor="let account of accountTypes" [ngValue]="account.accountTypeId">{{account.accountType}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="accountHolderName">Account Holder Name</label>
+              <input class="form-control" type="text" id="accountHolderName" formControlName="accountHolderName"
+                placeholder="Account Holder Name" required>
+              <div
+                *ngIf="bankForm.controls['accountHolderName'].invalid && (bankForm.controls['accountHolderName'].dirty || bankForm.controls['accountHolderName'].touched)">
+                <small class="form-text text-danger" *ngIf="bankForm.controls['accountHolderName'].errors.pattern">
+                  Invalid Account Holder Name
+                </small>
+                <small *ngIf="bankForm.controls['accountHolderName'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bankName">Banke Name</label>
+              <input type="text" class="form-control" id="bankName" placeholder="Bank Name" formControlName="bankName"
+                required>
+              <div
+                *ngIf="bankForm.controls['bankName'].invalid && (bankForm.controls['bankName'].dirty || bankForm.controls['bankName'].touched)">
+                <small *ngIf="bankForm.controls['bankName'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bankBranch">Bank Branch</label>
+              <input type="text" class="form-control" id="bankBranch" placeholder="Bank Branch"
+                formControlName="bankBranch" required>
+              <div
+                *ngIf="bankForm.controls['bankBranch'].invalid && (bankForm.controls['bankBranch'].dirty || bankForm.controls['bankBranch'].touched)">
+                <small *ngIf="bankForm.controls['bankBranch'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bankState">Bank State</label>
+              <input type="text" class="form-control" id="bankState" placeholder="Bank State"
+                formControlName="bankState" required>
+              <div
+                *ngIf="bankForm.controls['bankState'].invalid && (bankForm.controls['bankState'].dirty || bankForm.controls['bankState'].touched)">
+                <small *ngIf="bankForm.controls['bankState'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bankCountry">Bank Country</label>
+              <input type="text" class="form-control" id="bankCountry" placeholder="Bank Country"
+                formControlName="bankCountry" required>
+              <div
+                *ngIf="bankForm.controls['bankCountry'].invalid && (bankForm.controls['bankCountry'].dirty || bankForm.controls['bankCountry'].touched)">
+                <small *ngIf="bankForm.controls['bankCountry'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bankAddress">Bank Address</label>
+              <input type="text" class="form-control" id="bankAddress" placeholder="Bank Address"
+                formControlName="bankAddress" required>
+              <div
+                *ngIf="bankForm.controls['bankAddress'].invalid && (bankForm.controls['bankAddress'].dirty || bankForm.controls['bankAddress'].touched)">
+                <small *ngIf="bankForm.controls['bankAddress'].errors.required" class="form-text text-danger">
+                  Required
+                </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-secondary mr-3" type="button" (click)="goBack()">Back</button>
+              <button class="btn btn-success" [disabled]="!bankForm.valid" type="submit">Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
